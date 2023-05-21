@@ -4,22 +4,13 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'tsserver',
-  'sumneko_lua',
+  'lua_ls',
   'rust_analyzer',
   'eslint',
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
-
+lsp.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -68,4 +59,7 @@ lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true,
+    signs=true,
+    underline = true,
+    update_in_insert = true
 })
