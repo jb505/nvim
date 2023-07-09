@@ -48,9 +48,6 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' }, -- Optional
         }
     }
-    -- Auto Pairs
---    use 'jiangmiao/auto-pairs'
-
     -- help docs 
     use 'nanotee/luv-vimdocs'
     use 'milisims/nvim-luaref'
