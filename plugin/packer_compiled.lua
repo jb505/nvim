@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/jb/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["luv-vimdocs"] = {
+    loaded = true,
+    path = "/home/jb/.local/share/nvim/site/pack/packer/start/luv-vimdocs",
+    url = "https://github.com/nanotee/luv-vimdocs"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/jb/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -138,6 +143,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jb/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-luaref"] = {
+    loaded = true,
+    path = "/home/jb/.local/share/nvim/site/pack/packer/start/nvim-luaref",
+    url = "https://github.com/milisims/nvim-luaref"
   },
   ["nvim-treesitter"] = {
     loaded = true,

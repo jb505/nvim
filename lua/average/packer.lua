@@ -49,5 +49,9 @@ return require('packer').startup(function(use)
         }
     }
     -- Auto Pairs
-    use 'jiangmiao/auto-pairs'
+--    use 'jiangmiao/auto-pairs'
+
+    -- help docs 
+    use 'nanotee/luv-vimdocs'
+    use 'milisims/nvim-luaref'
 end)
