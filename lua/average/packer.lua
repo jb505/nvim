@@ -6,13 +6,11 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-
+    -- Telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+        requires = { {'nvim-lua/plenary.nvim'} }
+        }
     -- Color Scheme
     use 'folke/tokyonight.nvim'
     -- Treesitter
@@ -51,14 +49,4 @@ return require('packer').startup(function(use)
     -- help docs 
     use 'nanotee/luv-vimdocs'
     use 'milisims/nvim-luaref'
-    -- Markdown preview
-    -- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-    -- Glow for markdown
-    use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
 end)
