@@ -11,7 +11,7 @@ P = function(v)
 end
 
 -- Floating terminal window
-function Open_Terminal()
+function OpenTerminal()
   -- Gotta get buff!
   local new_buffer = vim.api.nvim_create_buf(true, false)
   local buffer_num = vim.fn.bufnr(new_buffer, true)
@@ -36,10 +36,8 @@ function Open_Terminal()
   vim.cmd('startinsert')
 end
 
+-- Make Netrw pretty!
 function OpenNetrw()
-  -- vim.api.nvim_set_var('netrw_winsize', 85)
-  -- vim.api.nvim_set_var('netrw_browse_split', Winrn)
-  Winrn = vim.api.nvim_get_current_win()
   -- Open Netrw in a vertical split on the left
   vim.cmd('vsplit wincmd L')
 

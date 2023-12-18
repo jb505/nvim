@@ -142,6 +142,10 @@ require('lazy').setup({
       end,
     },
   },
+  {
+    -- Nvim-dev-icons
+    'nvim-tree/nvim-web-devicons'
+  },
 
   -- Set editor theme
   {

@@ -1,17 +1,27 @@
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    prompt_prefix = '$ ',
+    winblend = 10,
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
     },
-    layout_strategy = 'vertical',
-    layout_config = { height = 0.95 },
-    prompt_prefix = '$ ',
-    winblend = 10,
-    border = true,
+  },
+  pickers = {
+    find_files = {
+      theme = 'ivy',
+    },
+    help_tags = {
+      theme = 'ivy'
+    },
+    git_files = {
+      theme = 'ivy'
+    }
+  },
+  extensions = {
   },
 }
 
@@ -81,4 +91,3 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-

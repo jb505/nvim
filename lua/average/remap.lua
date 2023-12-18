@@ -8,13 +8,15 @@ vim.g.maplocalleader = ' '
 
 -- My fancy new terminal... Oh yea!!
 vim.keymap.set('n', '<leader>ot', function()
-  Open_Terminal()
+  OpenTerminal()
 end)
 
+vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, { desc = 'Format current file' })
+
+-- Ummm.... What does this even do??
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Netrw (*-*)
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>pv", function()
   OpenNetrw()
 end)

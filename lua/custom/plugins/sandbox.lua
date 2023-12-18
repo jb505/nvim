@@ -75,3 +75,4 @@ local winid = vim.api.nvim_get_current_win()
 vim.wo[winid].number = true -- same as vim.wo.number = true
 -- print(winid)
 -- print(vim.wo.foldmarker)
+-- Winrn = vim.api.nvim_get_current_win()
