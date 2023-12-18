@@ -76,3 +76,88 @@ vim.wo[winid].number = true -- same as vim.wo.number = true
 -- print(winid)
 -- print(vim.wo.foldmarker)
 -- Winrn = vim.api.nvim_get_current_win()
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local sorters = require("telescope.sorters")
+
+local opts = {
+	finder = finders.new_table {
+		"Task 1",
+		"Task 2",
+		"Task 3"
+	},
+	sorter = sorters.get_generic_fuzzy_sorter({}),
+}
+
+
+local pending_col = pickers.new(opts, {})
+-- pending_col:find()
+
+
+local function pending()
+	-- Gotta get buff!
+	local new_buffer = vim.api.nvim_create_buf(true, false)
+	local buffer_num = vim.fn.bufnr(new_buffer, true)
+	-- Window options
+	local opts = {
+		title = ' Pending Tasks ¯\\_(ツ)_/¯ ',
+		title_pos = 'center',
+		relative = 'editor',
+		width = 50,
+		height = 17,
+		row = 10,
+		col = 50,
+		style = 'minimal',
+		border = 'single',
+		bufpos = { 100, 10 }
+	}
+	-- Open fancy floaty float window
+	vim.api.nvim_open_win(buffer_num, true, opts)
+end
+
+-- Function to open a file in a floating buffer
+function open_file_in_floating_buffer(file_path)
+	-- Create a new buffer
+	local bufnr = vim.api.nvim_create_buf(false, true)
+
+	-- Open the buffer in a floating window
+	local width = 0.8
+	local height = 0.8
+	local row = math.floor(((1 - height) / 2) * vim.o.lines)
+	local col = math.floor(((1 - width) / 2) * vim.o.columns)
+
+	local win_id = vim.api.nvim_open_win(bufnr, true, {
+		relative = "editor",
+		row = row,
+		col = col,
+		width = math.floor(width * vim.o.columns),
+		height = math.floor(height * vim.o.lines),
+		style = "minimal",
+		border = "rounded",
+	})
+
+	-- Read the file content and set it in the buffer
+	local file_content = vim.fn.readfile(file_path)
+	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, file_content)
+
+	-- Set the filetype based on the file extension
+	local file_type = vim.fn.fnamemodify(file_path, ":e")
+	vim.api.nvim_buf_set_option(bufnr, "filetype", file_type)
+
+	-- Set the window title to the file name
+	-- vim.api.nvim_win_set_option(win_id, 'title', file_path)
+
+	-- Make the buffer and window modifiable
+	vim.api.nvim_buf_set_option(bufnr, "modifiable", true)
+	-- vim.api.nvim_win_set_option(win_id, "modifiable", true)
+
+	-- Set the buffer to read-only if needed
+	vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+
+	-- Set the buffer to autocommands to close the window when the buffer is wiped out
+	vim.cmd([[autocmd BufWipeout <buffer> exe 'bwipeout!']])
+end
+
+-- local file_content = vim.fn.readfile(file_path)
+-- Example usage:
+open_file_in_floating_buffer("/home/jb/.config/nvim/lua/custom/plugins/sandbox.lua")

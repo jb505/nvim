@@ -1,1 +1,2 @@
-# Neovim config
+# Average Neovim
+

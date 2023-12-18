@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>ot', function()
   OpenTerminal()
 end)
 
-vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, { desc = 'Format current file' })
+vim.keymap.set('n', '<leader>ff', vim.lsp.buf.format, { desc = '[F]ormat current [F]ile' })
 
 -- Ummm.... What does this even do??
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })

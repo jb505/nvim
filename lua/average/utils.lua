@@ -1,5 +1,5 @@
 --[[
-  Gang gang! utils gang!!
+  Gang gang! Utils gang!!
   Purpose: Utility / Helper functions
   to do stuff.
 --]]
@@ -10,12 +10,12 @@ P = function(v)
   return v
 end
 
--- Floating terminal window
+-- Floating Terminal Window
 function OpenTerminal()
   -- Gotta get buff!
   local new_buffer = vim.api.nvim_create_buf(true, false)
   local buffer_num = vim.fn.bufnr(new_buffer, true)
-  -- Dis whole table ops!
+  -- Window options
   local opts = {
     title = ' ¯\\_(ツ)_/¯ ',
     title_pos = 'left',
@@ -40,12 +40,8 @@ end
 function OpenNetrw()
   -- Open Netrw in a vertical split on the left
   vim.cmd('vsplit wincmd L')
-
   -- Resize the Netrw window
   vim.cmd('vertical resize 20')
-
   -- Open Netrw
   vim.cmd('Explore')
-
-  vim.cmd('wincmd W')
 end
