@@ -115,14 +115,30 @@ local function pending()
 	vim.api.nvim_open_win(buffer_num, true, opts)
 end
 
+local pending = require('pending')
+
+function iterate_over_table(myTable)
+	if type(myTable) == "table" then
+		for _, entry in ipairs(myTable) do
+			if type(entry) == "table" then
+				for key, value in pairs(entry) do
+					print(key, value)
+				end
+			end
+		end
+	else
+		print("Error: Input is not a table.")
+	end
+end
+
 -- Function to open a file in a floating buffer
 function open_file_in_floating_buffer(file_path)
 	-- Create a new buffer
 	local bufnr = vim.api.nvim_create_buf(false, true)
 
 	-- Open the buffer in a floating window
-	local width = 0.8
-	local height = 0.8
+	local width = 0.5
+	local height = 0.5
 	local row = math.floor(((1 - height) / 2) * vim.o.lines)
 	local col = math.floor(((1 - width) / 2) * vim.o.columns)
 
@@ -160,4 +176,63 @@ end
 
 -- local file_content = vim.fn.readfile(file_path)
 -- Example usage:
-open_file_in_floating_buffer("/home/jb/.config/nvim/lua/custom/plugins/sandbox.lua")
+-- open_file_in_floating_buffer("/home/jb/.config/nvim/lua/custom/plugins/sandbox.lua")
+
+-- Wrtie to json Function
+-- local function pending(value)
+-- 	json_file = vim.fn.readfile('/home/jb/.config/nvim/lua/custom/plugins/pending.lua')
+-- 	return json_file.value
+-- end
+-- local myTable = require("pending")
+-- function iterate_over_table(myTable)
+--     if type(myTable) == "table" then
+--         for _, entry in ipairs(myTable) do
+--             if type(entry) == "table" then
+--                 for key, value in pairs(entry) do
+--                     print(key, value)
+--                 end
+--             end
+--         end
+--     else
+--         print("Error: Input is not a table.")
+--     end
+-- end
+-- local function print_nested_table(table)
+-- 	P(table)
+-- 	if type(table) == "table" then
+-- 		print("Entering 1st if")
+-- 		print(type(table))
+-- 		for _, entry in pairs(table) do
+-- 			print("Entering 1st for loop")
+-- 			print(type(_))
+-- 			if type(entry) == "table" then
+-- 				print("Entering 2nd if")
+-- 				print(type(_))
+-- 				for key, value in pairs(entry) do
+-- 					print("Entering 2nd for")
+-- 					print(key, value)
+-- 				end
+-- 			end
+-- 		end
+-- 	end
+-- end
+-- print_nested_table(myTable)
+-- Neovim Lua function to iterate over a table with nested tables
+
+--- Example usage:
+-- local myTable = {
+-- 	{
+-- 		id = 1,
+-- 		name = "name1",
+-- 	},
+-- 	{
+-- 		id = 2,
+-- 		name = "name2",
+-- 	},
+-- 	{
+-- 		id = 3,
+-- 		name = "name3",
+-- 	}
+-- }
+
+iterate_over_table(pending)
