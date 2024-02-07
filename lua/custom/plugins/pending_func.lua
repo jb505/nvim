@@ -1,4 +1,5 @@
-local pending = require('pending')
+-- local pending = require('pending')
+PENDING = require('pending')
 
 local function getTable(myTable)
 	local results = {}
@@ -37,13 +38,13 @@ local function openPending()
 	})
 
 	-- Read the file content and set it in the buffer
-	local pending_table = getTable(pending)
+	local pending_table = getTable(PENDING)
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, pending_table)
 end
 
-local function addPending ()
+-- local function addPending ()
 	-- Get input
 	-- Append input to pedning.lua
-end
+-- end
 
 openPending()
